@@ -1,6 +1,10 @@
-## Map
+# Projects
+
+## 2018 Victorian Election Results by Polling Booth Map
 
 The 2018 Victorian Election Results by Polling Booth Map can be accessed [here](https://datamapsvotes.github.io/Victorian%20State%20Election%20Polling%20Place%20Map%202018/index.html)
+
+This map was created by creating voronoi cells of polling booths for each district, cutting the voronois by their district shape (as it is fairly useless to know which Mildura polling booth is closest to Mallacoota), then colouring the map with the polling booth results after adjusting for postal votes.
 
 ### Note of caution
 
@@ -11,6 +15,8 @@ The map colours the Two-Candidate-Preferred results in each district electing a 
 The popularity of local members affects the votes cast in the legislative assembly. Comparing across district lines means you might be looking at one booth which was electing a popular member for their party and another which may have the same political composition, but as their member may be less popular, the map makes it look like these communities are different, when in reality they may vote the same had they been placed in the same district.
 
 Further, many districts are not ALP against LIB. In Melbourne District for example, the figures shown are ALP against GRN, which means that comparing booths in Melbourne to a district that is ALP against LIB might suggest that the political composition of these areas differs markedly when in reality it changes because the two largest parties are different in different districts. An example of these differences can be found between Kensington and Newmarket booths.
+
+As the VEC only collects two-candidate-preffered polling place data for candidates it believes will finish 1st and 2nd, the map will not show the correct contest as the necessary data is not available from the VEC. Werribee District shows an ALP against LIB contest when an Independent actually finished 2nd. The map shows the ALP against LIB contest despite the fact that it is not the correct pair of candidates.
 
 #### Allocation of prepoll, postal, absent and other votes not cast at a polling place
 
