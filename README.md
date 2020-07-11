@@ -16,13 +16,13 @@ The map colours the Two-Candidate-Preferred results in each district electing a 
 
 The popularity of local members affects the votes cast in the legislative assembly. Comparing across district lines means you might be looking at one booth which was electing a popular member for their party and another which may have the same political composition, but as their member may be less popular, the map makes it look like these communities are different, when in reality they may vote the same had they been placed in the same district.
 
-Further, many districts are not ALP against LIB. In Melbourne District for example, the figures shown are ALP against GRN, which means that comparing booths in Melbourne to a district that is ALP against LIB might suggest that the political composition of these areas differs markedly when in reality it changes because the two largest parties are different in different districts. An example of these differences can be found between Kensington and Newmarket booths [here](https://datamapsvotes.github.io/Victorian%20State%20Election%20Polling%20Place%20Map%202018/index.html#15/-37.7833/144.9183)
+Further, many districts are not ALP against LIB. In Melbourne District for example, the figures shown are ALP against GRN, which means that comparing booths in Melbourne to a district that is ALP against LIB might suggest that the political composition of these areas differs markedly when in reality it changes because the two largest parties are different in different districts. An example of these differences can be found between Kensington and Newmarket booths.
 
 #### Allocation of prepoll, postal, absent and other votes not cast at a polling place
 
 All the votes that were not cast on the day had to be allocated to each of the booths in some way, as these votes are just as valid and in many seats change the outcome. How this was done was by taking the percentage of all of a party's on the day votes in the district that were cast in a particular polling booth and allocating that booth that percentage of the party/candidate's votes that were not cast on the day in the district. i.e. Say 20% of all the ALP votes cast on the day for that district were cast in some polling place, then 20% of the ALP's votes that were recorded as prepoll, absent, postal or declaration votes for that district would be allocated to that polling place.
 
-The effect of this is that if two polling places are in different districts but have the same political composition
+The effect of this is that if two polling places are in different districts and are coloured differently, one may assume that they are different however because one booth might be the most supportive of its party in its district and the other booth the least supportive of the same party in its district, the two booths might have different allocations of other votes despite being politically similar.
 
 
 ### Markdown
