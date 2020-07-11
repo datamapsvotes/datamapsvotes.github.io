@@ -1,14 +1,8 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/datamapsvotes/datamapsvotes.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Map
+## Map
 
 The 2018 Victorian Election Results by Polling Booth Map can be accessed [here](https://datamapsvotes.github.io/Victorian%20State%20Election%20Polling%20Place%20Map%202018/index.html)
 
-#### Note of caution
+### Note of caution
 
 The map colours the Two-Candidate-Preferred results in each district electing a member to the Legislative Assembly for every polling place on the day. Comparison across districts can be inaccurate for the following reasons:
 
