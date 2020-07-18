@@ -1,0 +1,272 @@
+<!doctype HTML>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Vic Senate Dis</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <style>
+            .yaxis {
+                font-size: 0.5em;
+            }
+            .yaxis path {
+                fill: none;
+            }
+            .xaxis  path{
+                fill: none;
+                stroke-width: 2px;
+                stroke: purple;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // Known bug, bars will not complete transition if Gain/loss category drops
+            // This MUST be adjusted for every new file
+            
+            var quota = 534207;
+            var preCountColumns = 4;
+            var xColumn = "C1";
+            var yColumn = "name";
+            var colourColumn = "ticket";
+            
+            // Customise
+            var customColours = [["A","#0000FF"],["X","#FF0000"],["V","#00FF00"],["I","#002f5d"],["Q","#FF9900"]]
+            var outerWidth = 740;
+            var outerHeight = 1500;
+            var margin = { left: 200, right: 30, top: 30, bottom: 30};
+            var barPadding = 0.2;
+            var duration = 40  //in seconds
+            
+            
+            // Definitions
+            var innerWidth = outerWidth - margin.left - margin.right;
+            var innerHeight = outerHeight - margin.top - margin.bottom;
+            var svg = d3.select("body").append("svg")
+                .attr("width", outerWidth)
+                .attr("height", outerHeight);
+            var g = svg.append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            var xAxisG = g.append("g")
+            .attr("class", "xaxis");
+            var yScale = d3.scale.ordinal().rangeBands([0,innerHeight], barPadding);
+            var xScale = d3.scale.linear().range([0,innerWidth]);
+            var xAxis = d3.svg.axis().scale(xScale).orient("top");
+            /*
+            var colourScale = d3.scale.ordinal().range(["#800000",    "#FFF0F5",    "#000000",    "#ADD8E6",    "#EE82EE",    "#1E90FF",    "#7CFC00",    "#B8860B",    "#00FA9A",    "#E0FFFF",    "#F5DEB3",    "#FAF0E6",    "#000080",    "#FF69B4",    "#6B8E23",    "#FFE4E1",    "#556B2F",    "#6495ED",    "#00FFFF",    "#A9A9A9",    "#F5F5DC",    "#FAFAD2",    "#808000",    "#EEE8AA",    "#DAA520",    "#8A2BE2",    "#6A5ACD",    "#5F9EA0",    "#F0F8FF",    "#7B68EE",    "#DB7093",    "#C0C0C0",    "#F0FFFF",    "#8B0000",    "#008B8B",    "#7FFFD4",    "#008000",    "#DC143C",    "#FF00FF",    "#708090",    "#9370DB",    "#228B22",    "#FDF5E6",    "#9ACD32",    "#FF00FF",    "#8B4513",    "#90EE90",    "#F5F5F5",    "#87CEFA",    "#FFC0CB"]);
+            colourScale.domain(["A",    "B",    "C",    "D",    "E",    "F",    "G",    "H",    "I",    "J",    "K",    "L",    "M",    "N",    "O",    "P",    "Q",    "R",    "S",    "T",    "U",    "V",    "W",    "X",    "Y",    "Z",    "AA",    "AB",    "AC",    "AD",    "AE",    "AF",    "AG",    "AH",    "AI",    "AJ",    "AK",    "AL",    "AM",    "AN",    "AO",    "AP",    "AQ",    "AR",    "AS",    "AT",    "AU",    "AV",    "AW",    "UG"]);
+            */
+            
+            
+            function render(data){
+                // This creates an array of significant counts, which are counts that begin a different candidates' downfall including 0 and the end of the count
+                var significantCounts = [];
+                var tickets = [];
+                var ticketColours = [];
+                var numberOfCounts = null;
+                
+
+                data.forEach(function (d){
+                             // Will not execute for candidates remaining when all positions are filled
+                            if(d.countDistributionBegins != null ){
+                                numberOfCounts = d.countsArray.length - 1
+                                    return significantCounts.push(d.countDistributionBegins)
+                             };
+                             
+                             });
+                             
+                             
+                             
+                             
+                significantCounts.push(0)
+                significantCounts.push(numberOfCounts)
+                significantCounts.sort(function(x, y){ return d3.ascending(x, y)});
+
+                //This merely sorts the array by first preferences - From Stack Exchange
+                data.sort(function(x, y){
+                   return d3.descending(x[xColumn], y[xColumn]);
+                          });
+                          
+                // This determines the ranks at each count
+                var arr1 = [];// For those elected at previous counts
+                var arr2 = [];// For those elected at the current count
+                var i = 0;
+                while (i < significantCounts.length){
+                    var j = 0
+                    while (j < data.length){
+                                 if (data[j]["C"+significantCounts[i]] >= quota){
+                                 arr2.push(data[j]);
+                                 data.splice(data.indexOf(data[j]),1)
+                                 };
+                                 j++
+                                 }
+                    arr2.sort(function(x, y){
+                    return d3.descending(x["C"+significantCounts[i]], y["C"+significantCounts[i]]);
+                           });
+                    data.sort(function(x, y){
+                    return d3.descending(x["C"+significantCounts[i]], y["C"+significantCounts[i]]);
+                           });
+                    arr1 = arr1.concat(arr2);
+                    arr2 = [];
+                    var rankCounter = 1
+                    while (rankCounter <= arr1.length){
+                        arr1[rankCounter - 1][i+"Rank"] = rankCounter
+                        rankCounter++
+                    }
+                    data.forEach(function(d){
+                        d[i+"Rank"] = rankCounter
+                        rankCounter++
+                    })
+                    i++
+                }
+                data = arr1.concat(data);
+
+                
+                
+                //This lists all of the tickets
+                // don't know why seperate forEach required
+                data.forEach(function (d){
+                             var indexOfTicket = tickets.findIndex(x => x == d.ticket);
+                             if (indexOfTicket == -1){
+                             tickets.push(d.ticket)
+                             }
+                             });
+                             
+                             // Creates colour array
+                             tickets.forEach(function(ticket){
+                                             var i;
+                                             var colourFound = false;
+                                             
+                                             for (i = 0; i < customColours.length; i++) {
+                                             if (customColours[i][0] == ticket && colourFound == false){
+                                                ticketColours.push(customColours[i][1])
+                                                colourFound = true
+                                             }
+                                             }
+                                             
+                                             if (colourFound == false){
+                                                ticketColours.push("#999999")
+                                             }
+                                             })
+                             
+                             var colourScale = d3.scale.ordinal().range(ticketColours);
+                             colourScale.domain(tickets);
+                             
+                             
+                // Defining domains
+                var numbers = [];
+                for (var i = 1; i <= data.length; i++) {
+                    numbers.push(i);}
+                yScale.domain(numbers);
+                xScale.domain([0,d3.max(data, function (d){
+                                        if (quota > d.C1){
+                                        return quota * 1.2;
+                                        }
+                                        else{
+                                        return d.C1 * 1.2; }})]);
+                                        
+                                        
+                var bars = g.selectAll("rect").data(data);
+                
+                // Enter phase
+                bars.enter().append("rect")
+                .attr("height", yScale.rangeBand())
+                .attr("x", function (d) {
+                      return 0;  });
+                
+                xAxisG.call(xAxis);
+                
+                // Update phase
+                bars
+                    .attr("y", function (d) {return yScale(d[(significantCounts.length - 1)+"Rank"]);  })
+                    .attr("width", function (d) {return xScale(d["C" + (numberOfCounts)]);  } )
+                    .attr("fill", function (d) { return colourScale(d[colourColumn]);})
+                    .append("animate")
+                    .attr("attributeName","width")
+                    .attr("values",function (d) {
+                          var widthAnimationString = "";
+                          var i = 0;
+                          while (i < significantCounts.length){
+                            widthAnimationString = widthAnimationString + xScale(d["C" + significantCounts[i]]) + ";"
+                            i += 1
+                          }
+                          return widthAnimationString;})
+                    .attr("dur",duration+"s");
+                    
+                function createYPositionAnimationString(d,position){
+                    var yPositionAnimationString = "";
+                    var i = 0
+                    while (i < significantCounts.length){
+                        if (position == "top"){
+                            yPositionAnimationString = yPositionAnimationString + yScale(d[i+"Rank"]) + ";"
+                        }
+                        else if (position == "middle"){
+                            var addHalfOfBar = yScale(d[i+"Rank"]) + yScale.rangeBand() / 2;
+                            yPositionAnimationString = yPositionAnimationString + addHalfOfBar + ";"
+                        }
+                    i++
+                    }
+                    return yPositionAnimationString
+                    }
+                    
+                bars.append("animate")
+                    .attr("attributeName","y")
+                    .attr("values",function (d){return createYPositionAnimationString(d, "top")})
+                    .attr("dur",duration+"s");
+                     
+                    
+                data.forEach(function(d) {
+                    var candidateLabelYPosition = yScale(d[(significantCounts.length - 1)+"Rank"]) + yScale.rangeBand() / 2;
+                    g.append("text")
+                             .attr("class", "yaxis")
+                             .attr("text-anchor", "end")
+                             .attr("dominant-baseline", "middle")
+                             .attr("x", -9)
+                             .attr("y", candidateLabelYPosition)
+                             .text(d.name)
+                             .append("animate")
+                             .attr("attributeName","y")
+                             .attr("values",createYPositionAnimationString(d, "middle"))
+                             .attr("dur",duration+"s")
+                             });
+                
+                
+                var quotaLine = g.append("path")
+                    .attr("d","M " + xScale(quota) + " 0 V " + innerHeight)
+                    .attr("stroke", "grey")
+                    .attr("stroke-dasharray", "3,3");
+
+                // Exit Phase
+                bars.exit().remove();
+            }
+            
+        
+                                    
+            function type(d){
+                var counts = Object.keys(d).length - preCountColumns;
+                var countsArray = [];
+                var countDistributionBegins = null;
+                d.C0 = "0"
+                var i = 0;
+                while (i <= counts){
+                    var currentCountPVT = +d["C" + i];
+                    var previousCountPVT = +d["C" + (i-1)];
+                    d["C" + i] = currentCountPVT;
+                    countsArray.push(+d["C" + i])
+                    if (currentCountPVT < previousCountPVT && countDistributionBegins == null){
+                        countDistributionBegins = i-1;
+                    }
+                i += 1
+                };
+                d.countDistributionBegins = countDistributionBegins;
+                d.countsArray = countsArray;
+                d.counts = counts;
+                return d
+            }
+        
+        d3.csv("FullPrefDist.csv",type,render);
+                
+        </script>
+    </body>
+</html>
