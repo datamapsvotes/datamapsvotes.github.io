@@ -28,7 +28,7 @@ The effect of this is that if two polling places are in different districts and 
 
 The (Victorian) Senate Preference Distribution preference animation can be found [here](https://datamapsvotes.github.io/Preference%20Distribution%20Animation/index.html).
 
-The animation attempts to demonstrate how preferences are distributed for senate elections, as well as ahow how these preferences were distributed for the Victorian senate election in 2019.
+The animation attempts to demonstrate how preferences are distributed for senate elections, as well as how these preferences were distributed for the Victorian senate election in 2019.
 
 To adapt this animation for any election, download the `index.html` file and create a csv file with the vote tally at each count for the election you wish to animate that matches the format of the `FullPrefDist.csv` file. You can usually obtain a preference count from the electoral commission that conducted the election, but it will still need to be formatted to match `FullPrefDist.csv`. (Don't worry if the electoral commission takes several counts to eliminate a candidate, the animation will handle that, and the 'ticket' column can be ignored if it isn't provided).
 
