@@ -59,9 +59,12 @@
         layer_OpenStreetMap_0;
         map.addLayer(layer_OpenStreetMap_0);
         function pop_2018VictorianResultsbyPollingBooth_1(feature, layer) {
-            var popupContent = '<table>\
+            var popupContent = '<table cellspacing="0">\
                    <tr>\
                        <td colspan="2" style="text-align:center;font-size:30px;color:white;background-color:'+ style_2018VictorianResultsbyPollingBooth_1_0(feature).fillColor + '"><b>' + (feature.properties['pp_name'] !== null ? autolinker.link(feature.properties['pp_name'].toLocaleString()) : '') + '</b></td>\
+                   </tr>\
+                   <tr>\
+                       <td colspan="2" style="text-align:center;font-size:9px;color:white;background-color:'+ style_2018VictorianResultsbyPollingBooth_1_0(feature).fillColor + '"><b>Booth</b></td>\
                    </tr>\
                    <tr>\
                        <th scope="row">District Name</th>\
