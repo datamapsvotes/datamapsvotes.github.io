@@ -2,7 +2,7 @@
 
 ## 2018 Victorian Election Results by Polling Booth Map
 
-The 2018 Victorian Election Results by Polling Booth Map can be accessed [here](https://datamapsvotes.github.io/Victorian%20State%20Election%20Polling%20Place%20Map%202018/index.html)
+The 2018 Victorian Election Results by Polling Booth Map can be accessed [here](https://datamapsvotes.github.io/Victorian%20State%20Election%20Polling%20Place%20Map%202018/index.html).
 
 This map was created by creating voronoi cells of polling booths for each district, cutting the voronois by their district shape (as it is fairly useless to know which Mildura polling booth is closest to Mallacoota), then colouring the map with the polling booth results after adjusting for postal votes.
 
@@ -24,35 +24,12 @@ All the votes that were not cast on the day had to be allocated to each of the b
 
 The effect of this is that if two polling places are in different districts and are coloured differently, one may assume that they are different however because one booth might be the most supportive of its party in its district and the other booth the least supportive of the same party in its district, the two booths might have different allocations of other votes despite being politically similar.
 
+## Senate preference distributions
 
-### Markdown
+The (Victorian) Senate Preference Distribution preference animation can be found [here](https://datamapsvotes.github.io/Preference%20Distribution%20Animation/index.html).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The animation attempts to demonstrate how preferences are distributed for senate elections, as well as ahow how these preferences were distributed for the Victorian senate election in 2019.
 
-```markdown
-Syntax highlighted code block
+To adapt this animation for any election, download the `index.html` file and create a csv file with the vote tally at each count for the election you wish to animate that matches the format of the `FullPrefDist.csv` file. You can usually obtain a preference count from the electoral commission that conducted the election, but it will still need to be formatted to match `FullPrefDist.csv`. (Don't worry if the electoral commission takes several counts to eliminate a candidate, the animation will handle that, and the 'ticket' column can be ignored if it isn't provided).
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/datamapsvotes/datamapsvotes.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+From there, go into `index.html` and edit the `quota` and `preCountColumns` (this one has to be either 3 or 4 depending if a 'ticket' column exists) variables to match your election. Then, scroll to the bottom and change the `FullPrefDist.csv` to the directory that your new csv file is in. Then, simply create a server for the HTML file folder and run it in a web browser.
