@@ -37,4 +37,4 @@ From there, go into `index.html` and edit the `quota` and `preCountColumns` (thi
 To customise tickets (parties), simply edit the `customColours` array so the first element of the first element of the array is the ticket name as it appears in the csv file, and the second element is the colour that they should be displayed as. Add another element to the larger array for each ticket you would like to colour.
 
 ### Credits
-This project was inspired by [Geoff Whale](http://www.grwpub.info/senate/index.html) and thus the svg created is released under [Creative Commons Attribution 3.0 Australia](https://creativecommons.org/licenses/by/3.0/au/).
+This project was inspired by [Geoff Whale](http://www.grwpub.info/senate/index.html) and thus the svg created is released under [Creative Commons Attribution 3.0 Australia](https://creativecommons.org/licenses/by/3.0/au/). The work has been significantly modified.
