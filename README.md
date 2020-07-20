@@ -35,3 +35,6 @@ To adapt this animation for any election, download the `index.html` file and cre
 From there, go into `index.html` and edit the `quota` and `preCountColumns` (this one has to be either 3 or 4 depending if a 'ticket' column exists) variables to match your election. Then, scroll to the bottom and change the `FullPrefDist.csv` to the directory that your new csv file is in. Then, simply create a server for the HTML file folder and run it in a web browser.
 
 To customise tickets (parties), simply edit the `customColours` array so the first element of the first element of the array is the ticket name as it appears in the csv file, and the second element is the colour that they should be displayed as. Add another element to the larger array for each ticket you would like to colour.
+
+### Credits
+This project was inspired by [Geoff Whale](http://www.grwpub.info/senate/index.html) and thus the svg created is released under [Creative Commons Attribution 3.0 Australia](https://creativecommons.org/licenses/by/3.0/au/).
