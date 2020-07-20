@@ -18,6 +18,10 @@
                 stroke-width: 2px;
                 stroke: purple;
             }
+        html, body {
+          width: 100%;
+          height: 100%;
+        }
         </style>
     </head>
     <body>
@@ -27,16 +31,15 @@
             
             var quota = 534207;
             var preCountColumns = 4;
-            var xColumn = "C1";
             var yColumn = "name";
             var colourColumn = "ticket";
             
             // Customise
-            var customColours = [["A","#0000FF"],["X","#FF0000"],["V","#00FF00"],["I","#002f5d"],["Q","#FF9900"]]
-            var outerWidth = 740;
-            var outerHeight = 1500;
-            var margin = { left: 200, right: 30, top: 30, bottom: 30};
-            var barPadding = 0.2;
+            var customColours = [["A","#0047AB"],["X","#DE3533"],["V","#39b54a"],["I","#002F5D"],["Q","#FC773E"]]
+            var outerWidth = window.innerWidth;
+            var outerHeight = window.innerHeight;
+            var margin = { left: 100, right: 30, top: 30, bottom: 20};
+            var barPadding = 0.15;
             var duration = 40  //in seconds
             
             
@@ -44,8 +47,10 @@
             var innerWidth = outerWidth - margin.left - margin.right;
             var innerHeight = outerHeight - margin.top - margin.bottom;
             var svg = d3.select("body").append("svg")
-                .attr("width", outerWidth)
-                .attr("height", outerHeight);
+                .attr("viewBox", "0 0 " +  outerWidth + " " + outerHeight)
+                .attr("preserveAspectRatio", "none")
+                .attr("height", "100%")
+                .attr("width", "100%");
             var g = svg.append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
             var xAxisG = g.append("g")
@@ -85,7 +90,7 @@
 
                 //This merely sorts the array by first preferences - From Stack Exchange
                 data.sort(function(x, y){
-                   return d3.descending(x[xColumn], y[xColumn]);
+                   return d3.descending(x["C1"], y["C1"]);
                           });
                           
                 // This determines the ranks at each count
@@ -219,7 +224,7 @@
                 data.forEach(function(d) {
                     var candidateLabelYPosition = yScale(d[(significantCounts.length - 1)+"Rank"]) + yScale.rangeBand() / 2;
                     g.append("text")
-                             .attr("class", "yaxis")
+                    .attr("font-size", yScale.rangeBand())
                              .attr("text-anchor", "end")
                              .attr("dominant-baseline", "middle")
                              .attr("x", -9)
