@@ -38,3 +38,9 @@ To customise tickets (parties), simply edit the `customColours` array so the fir
 
 ### Credits
 This project was inspired by [Geoff Whale](http://www.grwpub.info/senate/index.html) and thus the svg created is released under the [Creative Commons Attribution 3.0 Australia](https://creativecommons.org/licenses/by/3.0/au/) license. The work has been significantly modified.
+
+## District Statistics Visualisation
+
+The Victorian Legislative Assembly District Statistics Visualisation can be found [here](https://datamapsvotes.github.io/District%20Statistics%20Visualisation/index.html#10/-37.8374/144.9962).
+
+This visualisation demonstrates which of the 2018 Legislative Assembly Districts are above or below the average elector count. This assists in determining which low population districts the Electoral Boundaries Commissiom will abolish and which high population districts they may provide additional seats to.
