@@ -16,7 +16,7 @@ The popularity of local members affects the votes cast in the legislative assemb
 
 Further, many districts are not ALP against LIB. In Melbourne District for example, the figures shown are ALP against GRN, which means that comparing booths in Melbourne to a district that is ALP against LIB might suggest that the political composition of these areas differs markedly when in reality it changes because the two largest parties are different in different districts. An example of these differences can be found between Kensington and Newmarket booths.
 
-As the VEC only collects two-candidate-preffered polling place data for candidates it believes will finish 1st and 2nd, the map will not show the correct contest as the necessary data is not available from the VEC. Werribee District shows an ALP against LIB contest when an Independent actually finished 2nd. The map shows the ALP against LIB contest despite the fact that it is not the correct pair of candidates.
+As the VEC only collects two-candidate-preffered polling place data for candidates it believes will finish 1st and 2nd, the map will not show the correct contest as the necessary data is not available from the VEC. Werribee and Benambra both have incorrect two-candidate-preferred figures as independent candidates finished second in those districts.
 
 #### Allocation of prepoll, postal, absent and other votes not cast at a polling place
 
