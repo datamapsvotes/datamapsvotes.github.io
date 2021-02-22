@@ -43,4 +43,4 @@ This project was inspired by [Geoff Whale](http://www.grwpub.info/senate/index.h
 
 The Victorian Legislative Assembly District Statistics Visualisation can be found [here](https://datamapsvotes.github.io/District%20Statistics%20Visualisation/index.html#10/-37.8374/144.9962).
 
-This visualisation demonstrates which of the 2018 Legislative Assembly Districts are above or below the average elector count. This assists in determining which low population districts the Electoral Boundaries Commissiom will abolish and which high population districts they may provide additional seats to.
+This visualisation demonstrates which of the 2018 Legislative Assembly Districts are above or below the average elector count. This assists in determining which low population districts the Electoral Boundaries Commission will abolish and which high population districts they may provide additional seats to.
