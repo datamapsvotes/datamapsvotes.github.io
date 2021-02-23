@@ -4,6 +4,8 @@
 
 The 2018 Victorian Election Results by Polling Booth Map can be accessed [here](https://datamapsvotes.github.io/Victorian%20State%20Election%20Polling%20Place%20Map%202018/index.html).
 
+:::The 2017 WA Results can be found [here](https://datamapsvotes.github.io//WA%20State%20Election%20Map/index.html)
+
 This map was created by creating voronoi cells of polling booths for each district, cutting the voronois by their district shape (as it is fairly useless to know which Mildura polling booth is closest to Mallacoota), then colouring the map with the polling booth results after adjusting for postal votes.
 
 ### Note of caution
